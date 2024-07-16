@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const User = require("../models/users")
-const ticketsList = require("../models/ticketslist")
+const ticketsList = require("../models/allticketsschema")
 //add ticket
 router.post("/ticket", async (req,res)=>{
     try {
