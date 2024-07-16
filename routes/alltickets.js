@@ -28,7 +28,7 @@ router.post("/addTickets", async (req, res) => {
                 status:"pending",
                 users:existingUser,
             });
-            toadmin("kvishnuprasanth2@gmail.com",`new ticket has been added by ${existingUser.fullName}! contactNo:${existingUser.contactNo}!` , "NEW TICKET ADDED")
+            toadmin(process.env.AUTH_MAILER_EMAIL,`new ticket has been added by ${existingUser.fullName}! contactNo:${existingUser.contactNo}!` , "NEW TICKET ADDED")
 
             await newTicket.save();
             existingUser.TicketsList.push(newTicket);
