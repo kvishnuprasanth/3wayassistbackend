@@ -28,7 +28,7 @@ router.post("/addTickets", async (req, res) => {
                 status:"pending",
                 users:existingUser,
             });
-            toadmin(process.env.AUTH_MAILER_EMAIL,`new ticket has been added by ${existingUser.fullName}! contactNo:${existingUser.contactNo}!` , "NEW TICKET ADDED")
+            toadmin(process.env.AUTH_MAILER_EMAIL,`new ticket has been added by ${existingUser.fullName} contactNo:${existingUser.contactNo}` , "NEW TICKET ADDED")
 
             await newTicket.save();
             existingUser.TicketsList.push(newTicket);
@@ -80,7 +80,7 @@ router.post("/assign", async (req, res) => {
         }
         const user = User.findById(ticket.users)
         tostaff(staff.email,`new ticket has been raised`)
-        touser(user.email,`${staff.fullName}! has been assigned for the ticket contactno: ${staff.contactNo}!`)
+        touser(user.email,`${staff.fullName} has been assigned for the ticket contactno: ${staff.contactNo}`)
         ticket.status = "assigned"
         ticket.staffName = staff.fullName
         ticket.staffNumber = staff.contactNo

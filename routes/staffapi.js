@@ -133,7 +133,7 @@ router.post("/issue/completed", async (req, res) => {
                 const index = staffMember.TicketsList.indexOf(ticketId);
                 staffMember.TicketsList.splice(index, 1);
                 await staffMember.save();
-                toadmin("assist.3way@gamil.com", `ticket has been resolved by ${staffMember.fullName}!`,"TICKET CLOSED")
+                toadmin("assist.3way@gamil.com", `ticket has been resolved by ${staffMember.fullName}`,"TICKET CLOSED")
                 ticket.picture.data = fs.readFileSync(files.picture.filepath)
                 ticket.picture.contentType = files.picture.mimetype
                 await ticket.save()
